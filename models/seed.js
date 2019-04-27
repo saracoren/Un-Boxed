@@ -1,7 +1,7 @@
 module.exports = [{
     category: 'Products',
     title: 'Modular Kayaks',
-    description: 'These modular kayaks break apart into different pieces, making it easy to transport them and add in an additional middle section if you want to turn a single kayak into a double',
+    description: 'These modular kayaks break apart into different pieces, making it easy to transport them and add in an additional middle section if you want to turn a single kayak into a double.',
     image: 'https://shop.spindriftltd.com/ekmps/shops/spindrift/images/martini-gtx-solo-modular-kayaks-38-p.jpg',
     link: 'https://kayaks.point65.com/'
   }, {

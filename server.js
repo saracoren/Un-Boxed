@@ -120,6 +120,17 @@ app.get('/media', (req, res) => {
   });
 })
 
+// Products Show
+app.get('/products/:index', (req, res) => {
+  Item.find({
+  }, (error, allItems)=>{
+      res.render('products_show.ejs', {
+          item: allItems[req.params.index]
+      });
+  });
+})
+
+
 //___________________
 //Listener
 //___________________

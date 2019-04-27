@@ -25,13 +25,7 @@
             height: 50px;
             font-weight: 600;
         }
-        .card .card-image {
-            height: 250px;
-        }
-        .card .card-content {
-            height: 50px;
-            background: teal;
-        }
+        
     </style>
 </head>
 <body>
@@ -51,23 +45,21 @@
         </div>
     </nav>
     <div class="container">
-        <h1>Products</h1>
+        <h1><%=item.title%></h1>
         <div class="row">
-            <% item.forEach((data, index) => { %>
-            <div class="col s12 m6 l6">
+            <div class="col s12 m12 l12">
                 <div class="card">
-                    <div class="card-content">
-                        <span class="card-title"><%=data.title%></span>
-                    </div>
                     <div class="card-image">
-                        <img src="<%=data.image %>" alt="<%=data.title %>">
+                        <img src="<%=item.image %>" alt="<%=item.title %>">
+                    </div>
+                    <div class="card-content">
+                        <p><%=item.description%></p>
                     </div>
                     <div class="card-action">
-                        <a href="/products/<%=data.index%>">See Details</a>
+                        <a href="<%=item.link%>">Go To Original Source</a>
                     </div>
                 </div>
             </div>
-            <%})%>
         </div>
     </div>
 </body>
