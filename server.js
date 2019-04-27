@@ -71,9 +71,50 @@ app.get('/seed', async (req, res) => {
 // Products Index
 app.get('/products', (req, res) => {
   // res.render('products_index.ejs');
-  Item.find({}, (error, allItems)=>{
+  Item.find({
+    category:'Products'
+  }, (error, allItems)=>{
       // console.log(allItems)
       res.render('products_index.ejs', {
+          item: allItems
+      });
+  });
+})
+
+// News Index
+app.get('/news', (req, res) => {
+  // res.render('products_index.ejs');
+  Item.find({
+    category:'News'
+  }, (error, allItems)=>{
+      // console.log(allItems)
+      res.render('news_index.ejs', {
+          item: allItems
+      });
+  });
+})
+
+// Events Index
+app.get('/events', (req, res) => {
+  // res.render('products_index.ejs');
+  Item.find({
+    category:'Events'
+  }, (error, allItems)=>{
+      // console.log(allItems)
+      res.render('events_index.ejs', {
+          item: allItems
+      });
+  });
+})
+
+// Media Index
+app.get('/media', (req, res) => {
+  // res.render('products_index.ejs');
+  Item.find({
+    category:'Media'
+  }, (error, allItems)=>{
+      // console.log(allItems)
+      res.render('media_index.ejs', {
           item: allItems
       });
   });
