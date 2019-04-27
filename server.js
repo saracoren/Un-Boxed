@@ -43,14 +43,41 @@ app.use(express.json());// returns middleware that only parses JSON - may or may
 //use method override
 app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
 
+//Model
+const newItems = require('./models/seed.js')
+const Item = require('./models/model.js')
 
 //___________________
 // Routes
 //___________________
 //localhost:3000
+
+
+// Home
 app.get('/' , (req, res) => {
-  res.send('Hello World!');
+  res.render('home.ejs');
 });
+
+//Populating seed Data
+app.get('/seed', async (req, res) => {
+  try {
+    const seedItems = await Item.create(newItems)
+    res.send(seedItems)
+  } catch (err) {
+    res.send(err.message)
+  }
+})
+
+// Products Index
+app.get('/products', (req, res) => {
+  // res.render('products_index.ejs');
+  Item.find({}, (error, allItems)=>{
+      // console.log(allItems)
+      res.render('products_index.ejs', {
+          item: allItems
+      });
+  });
+})
 
 //___________________
 //Listener
