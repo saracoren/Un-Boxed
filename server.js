@@ -59,14 +59,14 @@ app.get('/' , (req, res) => {
 });
 
 //Populating seed Data
-app.get('/seed', async (req, res) => {
-  try {
-    const seedItems = await Item.create(newItems)
-    res.send(seedItems)
-  } catch (err) {
-    res.send(err.message)
-  }
-})
+// app.get('/seed', async (req, res) => {
+//   try {
+//     const seedItems = await Item.create(newItems)
+//     res.send(seedItems)
+//   } catch (err) {
+//     res.send(err.message)
+//   }
+// })
 
 // Products Index
 app.get('/products', (req, res) => {
@@ -120,16 +120,102 @@ app.get('/media', (req, res) => {
   });
 })
 
+// New
+app.get('/new', (req, res) => {
+  res.render('new.ejs')
+})
+
+// Create
+app.post('/', (req, res) => {
+  Item.create(req.body, (error, createdProduct)=>{
+      if (error) {
+          res.send(error)
+      } else {
+          res.redirect('/');
+      }
+  });
+})
+
+
 // Products Show
-app.get('/products/:index', (req, res) => {
-  Item.find({
-  }, (error, allItems)=>{
-      res.render('products_show.ejs', {
-          item: allItems[req.params.index]
+app.get('/products/:id', (req, res) => {
+  Item.findById(req.params.id, (error, allItems)=>{
+    res.render('show.ejs', {
+      item: allItems
+    });
+  });
+})
+
+// Edit Products
+app.get('/products/:id/edit', (req, res)=>{
+  Item.findById(req.params.id, (err, foundItem)=>{
+      res.render('edit.ejs', {
+          item: foundItem
+      });
+  });
+});
+
+// Edit News
+app.get('/news/:id/edit', (req, res)=>{
+  Item.findById(req.params.id, (err, foundItem)=>{
+      res.render('edit.ejs', {
+          item: foundItem
+      });
+  });
+});
+
+// Edit Events
+app.get('/events/:id/edit', (req, res)=>{
+  Item.findById(req.params.id, (err, foundItem)=>{
+      res.render('edit.ejs', {
+          item: foundItem
+      });
+  });
+});
+
+// Edit Media
+app.get('/media/:id/edit', (req, res)=>{
+  Item.findById(req.params.id, (err, foundItem)=>{
+      res.render('edit.ejs', {
+          item: foundItem
+      });
+  });
+});
+
+
+// News Show
+app.get('/news/:id', (req, res) => {
+  Item.findById(req.params.id, (error, allItems)=>{
+      res.render('show.ejs', {
+          item: allItems
       });
   });
 })
 
+// Events Show
+app.get('/events/:id', (req, res) => {
+  Item.findById(req.params.id, (error, allItems)=>{
+      res.render('show.ejs', {
+          item: allItems
+      });
+  });
+})
+
+// Media Show
+app.get('/media/:id', (req, res) => {
+  Item.findById(req.params.id, (error, allItems)=>{
+      res.render('show.ejs', {
+          item: allItems
+      });
+  });
+})
+
+// Delete Products
+app.delete('/products/:id', (req, res) => {
+  Item.findByIdAndRemove(req.params.id, (err, deletedProduct)=>{
+      res.redirect('/products');
+  });
+})
 
 //___________________
 //Listener
