@@ -26,8 +26,20 @@
             font-weight: 600;
         }
         .card .card-image {
-            height: 250px;
+            max-height: 250px;
+        
             
+        }
+        .card-action {
+            display: flex;
+            flex-direction: row;
+        }
+        form:hover { 
+            opacity: 0.5;
+            transition: .1s;
+        }
+        .delete-btn:hover {
+            cursor: pointer;
         }
         .card .card-content {
             height: 50px;
@@ -71,7 +83,7 @@
                         <a href="/products/<%=data.id%>">See Details</a>
                         <a href="/products/<%=data.id%>/edit">Edit</a>
                         <form action="/products/<%=data.id %>?_method=DELETE" method="POST">
-                            <input type="submit" value="DELETE"/>
+                            <input class="delete-btn" type="submit" value="DELETE"/>
                         </form>
                     </div>
                 </div>
