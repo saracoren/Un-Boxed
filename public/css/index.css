@@ -1,0 +1,55 @@
+body {
+    background: rgb(202, 255, 0);
+}
+.container {
+    width: 80%;
+}
+.card {
+    border: 2px solid black;
+}
+.card .card-title {
+    position: absolute;
+    top: 0;
+    max-width: 100%;
+    padding: 10px;
+    height: 50px;
+    font-weight: 600;
+}
+.card .card-image {
+    height: 250px;
+}
+.card .card-image img {
+    height: 100%;
+}
+.card-action {
+    display: flex;
+    flex-direction: row;
+}
+form:hover { 
+    opacity: 0.5;
+    transition: .1s;
+}
+input:hover {
+    cursor: pointer;
+}
+.card .card-content {
+    height: 50px;
+    background: teal;
+}
+input[type= submit] {
+    color: orange;
+    border: 0px;
+}
+.item-label {
+    color: salmon;
+    font-size: 20px;
+    font-weight: 500;
+}
+.item-input {
+    margin: 0;
+    height: 5px;
+}
+.box-icon {
+    height: 25px;
+    width: 25px;
+}

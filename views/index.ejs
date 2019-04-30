@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <% include ./partials/head.ejs %>
+</head>
+<body>
+    <nav>
+        <% include ./partials/nav.ejs %>
+    </nav>
+    <div class="container">
+        <div class="row">
+                <h1>Products</h1>
+            <% item.forEach((data, index) => { %>
+            <div class="col s12 m6 l6">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title"><%=data.title%></span>
+                    </div>
+                    <div class="card-image">
+                        <img src="<%=data.image %>" alt="<%=data.title %>">
+                    </div>
+                    <div class="card-action">
+                        <a href="/<%=data.category%>/<%=data.id%>">See Details</a>
+                        <a href="/<%=data.category%>/<%=data.id%>/Edit">Edit</a>
+                        <form action="/<%=data.category%>/<%=data.id %>?_method=DELETE" method="POST">
+                            <input type="submit" value="DELETE"/>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <%})%>
+        </div>
+    </div>
+</body>
+</html>

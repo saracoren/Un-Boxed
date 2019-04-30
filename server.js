@@ -68,60 +68,64 @@ app.get('/' , (req, res) => {
 //   }
 // })
 
+/////////////////////////////////////////////////////////////////////////////////
+// INDEX
+
 // Products Index
-app.get('/products', (req, res) => {
+app.get('/Products', (req, res) => {
   // res.render('products_index.ejs');
   Item.find({
     category:'Products'
   }, (error, allItems)=>{
       // console.log(allItems)
-      res.render('products_index.ejs', {
+      res.render('index.ejs', {
           item: allItems
       });
   });
 })
 
 // News Index
-app.get('/news', (req, res) => {
+app.get('/News', (req, res) => {
   // res.render('products_index.ejs');
   Item.find({
     category:'News'
   }, (error, allItems)=>{
       // console.log(allItems)
-      res.render('news_index.ejs', {
+      res.render('index.ejs', {
           item: allItems
       });
   });
 })
 
 // Events Index
-app.get('/events', (req, res) => {
+app.get('/Events', (req, res) => {
   // res.render('products_index.ejs');
   Item.find({
     category:'Events'
   }, (error, allItems)=>{
       // console.log(allItems)
-      res.render('events_index.ejs', {
+      res.render('index.ejs', {
           item: allItems
       });
   });
 })
 
 // Media Index
-app.get('/media', (req, res) => {
+app.get('/Media', (req, res) => {
   // res.render('products_index.ejs');
   Item.find({
     category:'Media'
   }, (error, allItems)=>{
       // console.log(allItems)
-      res.render('media_index.ejs', {
+      res.render('index.ejs', {
           item: allItems
       });
   });
 })
 
+///////////////////////////////////////////////////////////
 // New
-app.get('/new', (req, res) => {
+app.get('/New', (req, res) => {
   res.render('new.ejs')
 })
 
@@ -136,9 +140,11 @@ app.post('/', (req, res) => {
   });
 })
 
+/////////////////////////////////////////////////////////////
+// SHOW
 
 // Products Show
-app.get('/products/:id', (req, res) => {
+app.get('/Products/:id', (req, res) => {
   Item.findById(req.params.id, (error, allItems)=>{
     res.render('show.ejs', {
       item: allItems
@@ -146,45 +152,8 @@ app.get('/products/:id', (req, res) => {
   });
 })
 
-// Edit Products
-app.get('/products/:id/edit', (req, res)=>{
-  Item.findById(req.params.id, (err, foundItem)=>{
-      res.render('edit.ejs', {
-          item: foundItem
-      });
-  });
-});
-
-// Edit News
-app.get('/news/:id/edit', (req, res)=>{
-  Item.findById(req.params.id, (err, foundItem)=>{
-      res.render('edit.ejs', {
-          item: foundItem
-      });
-  });
-});
-
-// Edit Events
-app.get('/events/:id/edit', (req, res)=>{
-  Item.findById(req.params.id, (err, foundItem)=>{
-      res.render('edit.ejs', {
-          item: foundItem
-      });
-  });
-});
-
-// Edit Media
-app.get('/media/:id/edit', (req, res)=>{
-  Item.findById(req.params.id, (err, foundItem)=>{
-      res.render('edit.ejs', {
-          item: foundItem
-      });
-  });
-});
-
-
 // News Show
-app.get('/news/:id', (req, res) => {
+app.get('/News/:id', (req, res) => {
   Item.findById(req.params.id, (error, allItems)=>{
       res.render('show.ejs', {
           item: allItems
@@ -193,7 +162,7 @@ app.get('/news/:id', (req, res) => {
 })
 
 // Events Show
-app.get('/events/:id', (req, res) => {
+app.get('/Events/:id', (req, res) => {
   Item.findById(req.params.id, (error, allItems)=>{
       res.render('show.ejs', {
           item: allItems
@@ -202,7 +171,7 @@ app.get('/events/:id', (req, res) => {
 })
 
 // Media Show
-app.get('/media/:id', (req, res) => {
+app.get('/Media/:id', (req, res) => {
   Item.findById(req.params.id, (error, allItems)=>{
       res.render('show.ejs', {
           item: allItems
@@ -210,10 +179,105 @@ app.get('/media/:id', (req, res) => {
   });
 })
 
+//////////////////////////////////////////////////////////////
+// EDIT 
+
+// Edit Products
+app.get('/Products/:id/Edit', (req, res)=>{
+  Item.findById(req.params.id, (err, foundItem)=>{
+      res.render('edit.ejs', {
+          item: foundItem
+      });
+  });
+});
+
+// Edit News
+app.get('/News/:id/Edit', (req, res)=>{
+  Item.findById(req.params.id, (err, foundItem)=>{
+      res.render('edit.ejs', {
+          item: foundItem
+      });
+  });
+});
+
+// Edit Events
+app.get('/Events/:id/Edit', (req, res)=>{
+  Item.findById(req.params.id, (err, foundItem)=>{
+      res.render('edit.ejs', {
+          item: foundItem
+      });
+  });
+});
+
+// Edit Media
+app.get('/Media/:id/Edit', (req, res)=>{
+  Item.findById(req.params.id, (err, foundItem)=>{
+      res.render('edit.ejs', {
+          item: foundItem
+      });
+  });
+});
+
+/////////////////////////////////////////////////////////
+// UPDATE
+
+// Update Products
+app.put('/Products/:id', (req, res)=>{
+  Item.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedItem)=>{
+    // res.send(updatedItem);
+    res.redirect('/Products');
+  });
+});
+
+// Update News
+app.put('/News/:id', (req, res)=>{
+  Item.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedItem)=>{
+    res.redirect('/News');
+  });
+});
+
+// Update Events
+app.put('/Events/:id', (req, res)=>{
+  Item.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedItem)=>{
+    res.redirect('/Events');
+  });
+});
+
+// Update Media
+app.put('/Media/:id', (req, res)=>{
+  Item.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedItem)=>{
+    res.redirect('/Media');
+  });
+});
+
+////////////////////////////////////////////////////////////
+// DELETE
+
 // Delete Products
-app.delete('/products/:id', (req, res) => {
+app.delete('/Products/:id', (req, res) => {
   Item.findByIdAndRemove(req.params.id, (err, deletedProduct)=>{
-      res.redirect('/products');
+      res.redirect('/Products');
+  });
+})
+
+// Delete News
+app.delete('/News/:id', (req, res) => {
+  Item.findByIdAndRemove(req.params.id, (err, deletedProduct)=>{
+      res.redirect('/News');
+  });
+})
+
+// Delete Events
+app.delete('/Events/:id', (req, res) => {
+  Item.findByIdAndRemove(req.params.id, (err, deletedProduct)=>{
+      res.redirect('/Events');
+  });
+})
+
+// Delete News
+app.delete('/Media/:id', (req, res) => {
+  Item.findByIdAndRemove(req.params.id, (err, deletedProduct)=>{
+      res.redirect('/Media');
   });
 })
 

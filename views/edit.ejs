@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" type="" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.css">
+        <% include ./partials/head.ejs %>
 </head>
 <body>
+    <nav>
+        <% include ./partials/nav.ejs %>
+    </nav>
     <div class="container">
     <h1>Edit <%=item.title%></h1>
-    <form action="/" method="POST">
+    <form action="/<%=item.category%>/<%=item.id%>?_method=PUT" method="POST">
         <label for="category">Category</label>
         <input type="text" name="category" id="category"/><br>
         <label for="title">Title</label>
@@ -21,7 +20,7 @@
         <input type="text" name="image" id="image" /><br>
         <label for="link">Link to Original Source</label>
         <input type="text" name="link" id="link" /><br>
-        <input type="submit" value="Create Item">
+        <input type="submit" value="Edit Item">
       </form>
     </div>
 </body>
