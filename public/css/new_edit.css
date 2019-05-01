@@ -1,0 +1,41 @@
+body {
+    background: rgb(202, 255, 0);
+}
+.container {
+    width: 80%;
+}
+
+.item-label {
+    color: salmon;
+    font-size: 20px;
+    font-weight: 500;
+}
+.item-input {
+    margin: 0;
+    height: 5px;
+}
+.box-icon {
+    height: 25px;
+    width: 25px;
+}
+.description-box {
+    height: 100px;
+    overflow:auto;
+}
+
+input, textarea {
+    color: gray;
+}
+
+input:focus, textarea:focus {
+    color: black;
+}
+
+.btn {
+    margin: 20px 20px 20px 0;
+    color: black;
+}
+
+i {
+    color: black;
+}

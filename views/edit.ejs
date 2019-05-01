@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <% include ./partials/head.ejs %>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Products</title>
+        <link rel="stylesheet" type="" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/css/new_edit.css">
 </head>
 <body>
     <nav>
@@ -10,17 +16,19 @@
     <div class="container">
     <h1>Edit <%=item.title%></h1>
     <form action="/<%=item.category%>/<%=item.id%>?_method=PUT" method="POST">
-        <label for="category">Category</label>
-        <input type="text" name="category" id="category"/><br>
-        <label for="title">Title</label>
-        <input type="text" name="title" id="title"/><br>
-        <label for="description">Description</label>
-        <textarea name="description" id="description">Description</textarea><br>
-        <label for="image">Image URL</label>
-        <input type="text" name="image" id="image" /><br>
-        <label for="link">Link to Original Source</label>
-        <input type="text" name="link" id="link" /><br>
-        <input type="submit" value="Edit Item">
+        <label class="item-label" for="category">Category</label>
+        <input type="text" name="category" id="category" value="<%=item.category%>"/><br>
+        <label class="item-label" for="title">Title</label>
+        <input type="text" name="title" id="title" value="<%=item.title%>"/><br>
+        <label class="item-label" for="description">Description</label>
+        <textarea class="description-box" name="description" id="description" value="<%=item.description%>">Description</textarea><br>
+        <label class="item-label" for="image">Image URL</label>
+        <input type="text" name="image" id="image" value="<%=item.image%>"/><br>
+        <label class="item-label" for="link">Link to Original Source</label>
+        <input type="text" name="link" id="link" value="<%=item.link%>"/><br>
+        <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                <i class="material-icons right">send</i>
+        </button>
       </form>
     </div>
 </body>
