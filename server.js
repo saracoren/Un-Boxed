@@ -78,6 +78,9 @@ app.get('/Products', (req, res) => {
     category:'Products'
   }, (error, allItems)=>{
       // console.log(allItems)
+      if(error) {
+        res.status(418).json({"myerror": error})
+      }
       res.render('index.ejs', {
           item: allItems
       });
