@@ -74,7 +74,6 @@ app.get('/' , (req, res) => {
 // Products Index
 app.get('/Products', (req, res) => {
   // res.render('products_index.ejs');
-  res.status(418).send('sadness')
   Item.find({
     category:'Products'
   }, (error, allItems)=>{
