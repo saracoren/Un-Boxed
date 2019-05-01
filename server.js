@@ -59,14 +59,14 @@ app.get('/' , (req, res) => {
 });
 
 //Populating seed Data
-// app.get('/seed', async (req, res) => {
-//   try {
-//     const seedItems = await Item.create(newItems)
-//     res.send(seedItems)
-//   } catch (err) {
-//     res.send(err.message)
-//   }
-// })
+app.get('/seed', async (req, res) => {
+  try {
+    const seedItems = await Item.create(newItems)
+    res.send(seedItems)
+  } catch (err) {
+    res.send(err.message)
+  }
+})
 
 /////////////////////////////////////////////////////////////////////////////////
 // INDEX
