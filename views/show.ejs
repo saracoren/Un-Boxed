@@ -20,6 +20,7 @@
         max-height: 400px;
         height: 100%;
         width: 50%;
+        overflow: hidden;
     }
     .card.horizontal .card-image img {
         max-height: 400px;
@@ -31,6 +32,37 @@
         max-height: 400px;
         overflow: auto;
     }
+    @media only screen and (min-width: 601px) {
+  .card.responsive-horizontal {
+    display: flex;
+  }
+  .card.responsive-horizontal.small .card-image, .card.responsive-horizontal.medium .card-image, .card.responsive-horizontal.large .card-image {
+    height: 100%;
+    max-height: none;
+    overflow: visible;
+  }
+  .card.responsive-horizontal.small .card-image img, .card.responsive-horizontal.medium .card-image img, .card.responsive-horizontal.large .card-image img {
+    max-height: 100%;
+    width: auto;
+  }
+  .card.responsive-horizontal .card-image {
+    max-width: 50%;
+  }
+  .card.responsive-horizontal .card-image img {
+    border-radius: 2px 0 0 2px;
+    width: auto;
+    max-width: 100%;
+  }
+  .card.responsive-horizontal .card-stacked {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .card.responsive-horizontal .card-stacked .card-content {
+    flex-grow: 1;
+  }
+}
     </style>
 </head>
 <body>
@@ -40,7 +72,7 @@
     <div class="container">
         <div class="col s12 m7 l7">
             <h2 class="header"><%=item.title%></h2>
-            <div class="card horizontal">
+            <div class="card horizontal responsive-horizontal">
               <div class="card-image">
                 <img src="<%=item.image %>">
               </div>
