@@ -1,12 +1,11 @@
-img {
-    height: 25px;
-    width: 25px;
-}
+html .black-text {
+    font-weight: 800;
+  }    
 
 i {
     color: black;
 }
 
 .sidenav {
-    background: teal;
+    background: teal; 
 }
